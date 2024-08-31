@@ -1,0 +1,52 @@
+# Assignment requires the use of loops and decision structures
+# August 28, 2024
+# (CSC-121-0901)
+# Kimora Lee
+ #Complete exercise 2 on page 43
+def calculate_bmi(weight, height):
+    # Calculate BMI using the formula: weight (lb) / (height (in) ^ 2) * 703
+    return (weight / (height ** 2)) * 703
+
+def main():
+    # Constants for healthy BMI range (thank you for the hint)
+    min_bmi = 18.5
+    max_bmi = 24.0
+    
+    while True:
+        # Prompt user for height and weight
+        height = float(input("Enter your height (in inches): "))
+        weight = float(input("Enter your weight (in pounds): "))
+        
+        # Calculate BMI
+        bmi = calculate_bmi(weight, height)
+        
+        # Print the calculated BMI
+        print(f"Your BMI is: {bmi:.1f}")
+        
+        # Determine and display the message that lines up with their BMI 
+        if bmi > max_bmi:
+            # Calculate the weight goal to be at the top of the healthy BMI range
+            weight_goal = (max_bmi * height ** 2) / 703
+            weight_to_lose = weight - weight_goal
+            print(f"Weight to lose for healthy BMI: {weight_to_lose:.0f} pounds")
+        elif bmi < min_bmi:
+            # Calculate the weight goal to be at the bottom of the healthy BMI range
+            weight_goal = (min_bmi * height ** 2) / 703
+            weight_to_gain = weight_goal - weight
+            print(f"Weight to gain for healthy BMI: {weight_to_gain:.0f} pounds")
+        else:
+            print("You are within the healthy BMI range.")
+            
+    
+        # Ask if the user wants to run the program again 
+        user_input = input("Do you want to check another BMI? (Yes/No): ").strip().lower()
+        
+        # Check the user's response
+        if user_input == 'no':
+            print("I hope you enjoyed, bye now!")
+    #Some fun way to tell people they are good to go/ the loop is broken
+            break  # Exit the loop and end the program
+
+if __name__ == "__main__":
+    main()
+    
