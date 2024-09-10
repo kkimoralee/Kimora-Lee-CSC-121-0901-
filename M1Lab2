@@ -1,0 +1,41 @@
+#Kimora Lee
+#Professor Seidi
+#(CSC-121-0901)
+#September 7, 2024
+
+def main():
+    # Get the number of investment options and initial investment amount from the user
+    num_options = int(input("Enter number of investment options: "))
+    initial_investment = float(input("Enter start value: "))
+
+    # Initialize variables to keep track of the best investment option
+    best_option = None
+    best_expected_return = float()
+    best_risk = 0.0
+
+    # Loop through each investment option
+    for i in range(1, num_options + 1):
+        print(f"Option {i}")
+        up_value = float(input(" Enter high value: "))
+        down_value = float(input(" Enter low value: "))
+
+        # Calculate expected end value, expected return, and risk 
+        expected_end_value = (up_value + down_value) / 2
+        expected_return = (expected_end_value - initial_investment) / initial_investment * 100  # in percentage
+        risk = (up_value - down_value) / 2
+
+        # Update the best investment option if this one has a higher expected return
+        if expected_return > best_expected_return:
+            best_expected_return = expected_return
+            best_risk = risk
+            best_option = i
+
+    # Print the best investment option and its details
+    print(f"Best investment: {best_option}")
+    print(f"Best average return = {best_expected_return:.1f} %")
+    print(f"Risk = {best_risk:.1f}")
+
+# Run the program
+if __name__ == "__main__":
+    main()
+    
